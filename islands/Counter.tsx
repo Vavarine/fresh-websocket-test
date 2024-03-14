@@ -9,7 +9,9 @@ export default function Counter() {
     const hostName = window.location.hostname;
     const port = window.location.port;
 
-    const socketUrl = `ws://${hostName}:${port}/api/ws`;
+    const socketUrl = port
+      ? `ws://${hostName}:${port}/api/ws`
+      : `wss://${hostName}/api/ws`;
     console.log("url", socketUrl);
     const socket = new WebSocket(socketUrl);
 
